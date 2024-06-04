@@ -1,5 +1,6 @@
 import React from 'react';
-import CartItem from './components/CartItem';
+import CartItem from '../components/CartItem'; 
+
 
 import { ListGroup, Button } from 'reactstrap';
 
