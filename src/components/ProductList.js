@@ -34,27 +34,20 @@ const products = [
   },
   { 
     id: 5, 
-    name: 'Smartphone Case', 
-    description: 'A durable smartphone case with shock-absorbent features to protect your device from accidental drops.', 
-    price: 9.99, 
-    image: '/asset/images/SmartPhoneCase.jpeg' 
-  },
-  { 
-    id: 6, 
     name: 'Wireless Headphones', 
     description: 'High-quality wireless headphones with noise-cancelling technology for an immersive audio experience.', 
     price: 79.99, 
     image: '/asset/images/WirelessHeadphone.jpeg' 
   },
   { 
-    id: 7, 
+    id: 6, 
     name: 'Portable Charger', 
     description: 'A compact and lightweight portable charger with fast-charging capabilities to keep your devices powered on the go.', 
     price: 24.99, 
     image: '/asset/images/PortableCharger.jpeg' 
   },
   { 
-    id: 8, 
+    id: 7, 
     name: 'Stainless Steel Water Bottle', 
     description: 'A sleek and durable stainless steel water bottle to keep you hydrated throughout the day.', 
     price: 19.99, 

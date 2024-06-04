@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Label, Input, Button, Container } from 'reactstrap';
 
 const Account = ({ user, updateUser }) => {
   const [formData, setFormData] = useState(user);
@@ -16,30 +16,32 @@ const Account = ({ user, updateUser }) => {
   };
 
   return (
-    <div>
-      <h2>Account</h2>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label for="name">Name</Label>
-          <Input
-            type="text"
-            name="name"
-            value={formData.name || ''}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="address">Shipping Address</Label>
-          <Input
-            type="text"
-            name="address"
-            value={formData.address || ''}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <Button type="submit">Update Account</Button>
-      </Form>
-    </div>
+    <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 56px)' }}>
+      <div>
+        <h2>Account</h2>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label for="name">Name</Label>
+            <Input
+              type="text"
+              name="name"
+              value={formData.name || ''}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="address">Shipping Address</Label>
+            <Input
+              type="text"
+              name="address"
+              value={formData.address || ''}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <Button type="submit">Update Account</Button>
+        </Form>
+      </div>
+    </Container>
   );
 };
 

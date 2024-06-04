@@ -1,39 +1,45 @@
 import React from 'react';
-import CartItem from '../components/CartItem'; 
+import { Card, CardBody, CardTitle, CardText, Button, Input, Container } from 'reactstrap';
 
-
-import { ListGroup, Button } from 'reactstrap';
-
-const ShoppingCart = ({ cart, updateCart }) => {
-  const removeItem = (id) => {
-    const updatedCart = cart.filter(item => item.id !== id);
-    updateCart(updatedCart);
+const ShoppingCart = ({ cart, updateCart, removeFromCart, updateProductQuantity }) => {
+  const handleQuantityChange = (productId, quantity) => {
+    const newQuantity = Math.max(1, parseInt(quantity, 10)); 
+    updateProductQuantity(productId, newQuantity);
   };
 
-  const changeQuantity = (id, quantity) => {
-    const updatedCart = cart.map(item =>
-      item.id === id ? { ...item, quantity } : item
-    );
-    updateCart(updatedCart);
+  const handleRemove = (productId) => {
+    removeFromCart(productId);
   };
 
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-      <ListGroup>
-        {cart.map(item => (
-          <CartItem
-            key={item.id}
-            item={item}
-            removeItem={removeItem}
-            changeQuantity={changeQuantity}
-          />
-        ))}
-      </ListGroup>
-      <Button color="success" onClick={() => alert('Purchase Complete!')}>
-        Finalize Purchase
-      </Button>
-    </div>
+    <Container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 'calc(100vh - 56px)' }}>
+      <div>
+        {cart.length === 0 ? (
+          <p>Your cart is empty</p>
+        ) : (
+          cart.map(product => (
+            <Card key={product.id} style={{ marginBottom: '20px' }}>
+              <CardBody>
+                <CardTitle tag="h5">{product.name}</CardTitle>
+                <CardText>{product.description}</CardText>
+                <CardText>Price: ${product.price}</CardText>
+                <CardText>
+                  Quantity:
+                  <Input
+                    type="number"
+                    value={product.quantity}
+                    onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+                    min="1"
+                    style={{ width: '60px', display: 'inline-block', marginLeft: '10px' }}
+                  />
+                </CardText>
+                <Button onClick={() => handleRemove(product.id)}>Remove</Button>
+              </CardBody>
+            </Card>
+          ))
+        )}
+      </div>
+    </Container>
   );
 };
 
